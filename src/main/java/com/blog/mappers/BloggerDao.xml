@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.dao.BloggerDao">
+    <select id="getbyusername" resultType="com.blog.entity.Blogger">
+        select  * from t_blogger where username=#{username}
+    </select>
+
+    <update id="update"  >
+     update t_blogger
+     <set>
+         <if test="password!=null and password!='' ">
+             password=#{password},
+         </if>
+         <if test="nickname!=null and nickname!='' ">
+             nickname=#{nickname},
+         </if>
+         <if test="sign!=null and sign!='' ">
+             sign=#{sign},
+         </if>
+         <if test="profile!=null and profile!='' ">
+             profile=#{profile},
+         </if>
+         <if test="imagename!=null and imagename!='' ">
+             imagename=#{imagename},
+         </if>
+     </set>
+     where id=1
+    </update>
+
+    <select id="find" resultType="com.blog.entity.Blogger">
+        select * from t_blogger where id=1
+    </select>
+
+</mapper>
